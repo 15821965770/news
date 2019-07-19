@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.mapper.UserMapper">
+
+    <!--public User checkUsername(String username);-->
+    <select id="checkUsername" resultType="Integer">
+        select  count(*) from user where username =#{username}
+    </select>
+
+    <!--Integer register();-->
+    <insert id="register" parameterType="User">
+        insert into user (username,password,phone) values (#{username},#{password},#{phone})
+    </insert>
+
+    <!--User checklogin(String username);-->
+    <select id="checklogin" resultType="User">
+        select * from user where username=#{username}
+    </select>
+
+
+</mapper>
